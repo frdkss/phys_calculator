@@ -4,38 +4,45 @@ import tkinter as tk  # Вызываю модуль для создания ин
 # Функция для вычисления закона кулона в зависимости от вопроса
 def calculate_coulombs_law(question):
     if question == 1:
-        result_text.set('')  # Очистка результата
+        try:
+            result_text.set('')  # Очистка результата
 
-        k = int(k_var.get())  # Получение значения k из поля ввода
-        q1 = int(q1_var.get())  # Получение значения |q1| из поля ввода
-        q2 = int(q2_var.get())  # Получение значения |q2| из поля ввода
-        r_squared = int(r_squared_var.get())  # Получение значения r^2 из поля ввода
+            k = int(k_var.get())  # Получение значения k из поля ввода
+            q1 = int(q1_var.get())  # Получение значения |q1| из поля ввода
+            q2 = int(q2_var.get())  # Получение значения |q2| из поля ввода
+            r_squared = int(r_squared_var.get())  # Получение значения r^2 из поля ввода
 
-        # Вычисление силы по закону кулона и установка результата
-        calc_coulomb = k * ((abs(q1) * abs(q2)) / (r_squared))
-        result_text.set(f'F = {k} * ((|{q1}| * |{q2}|) / ({r_squared})) = {calc_coulomb}')
-
+            # Вычисление силы по закону кулона и установка результата
+            calc_coulomb = k * ((abs(q1) * abs(q2)) / (r_squared))
+            result_text.set(f'F = {k} * ((|{q1}| * |{q2}|) / ({r_squared})) = {calc_coulomb}')
+        except TypeError:
+            clear_fields()
     elif question == 2:
-        result_text.set('')  # Очистка результата
+        try:
+            result_text.set('')  # Очистка результата
 
-        k = int(k_var.get())  # Получение значения k из поля ввода
-        q1 = int(q1_var.get())  # Получение значения |q1| из поля ввода
-        q2 = int(q2_var.get())  # Получение значения |q2| из поля ввода
-        r_squared = int(r_squared_var.get())  # Получение значения r^2 из поля ввода
-        e = int(e_var.get())  # Получение значения E0 из поля ввода
+            k = int(k_var.get())  # Получение значения k из поля ввода
+            q1 = int(q1_var.get())  # Получение значения |q1| из поля ввода
+            q2 = int(q2_var.get())  # Получение значения |q2| из поля ввода
+            r_squared = int(r_squared_var.get())  # Получение значения r^2 из поля ввода
+            e = int(e_var.get())  # Получение значения E0 из поля ввода
 
-        # Вычисление силы в среде и установка результата
-        calc_coulomb = (k * abs(q1) * abs(q2)) / (e * r_squared)
-        result_text.set(f'F = ({k} * |{q1}| * |{q2}|) / ({e} * {r_squared}) = {calc_coulomb}')
-
+            # Вычисление силы в среде и установка результата
+            calc_coulomb = (k * abs(q1) * abs(q2)) / (e * r_squared)
+            result_text.set(f'F = ({k} * |{q1}| * |{q2}|) / ({e} * {r_squared}) = {calc_coulomb}')
+        except TypeError:
+            clear_fields()
     elif question == 3:
-        result_text.set('')  # Очистка результата
+        try:
+            result_text.set('')  # Очистка результата
 
-        e = int(e_var.get())  # Получение значения E0 из поля ввода
+            e = int(e_var.get())  # Получение значения E0 из поля ввода
 
-        # Вычисление K и установка результата
-        k_value = 1 / (4 * 3.14 * e)
-        result_text.set(f'K = 1 / (4 * 3.14 * {e}) = {k_value}')
+            # Вычисление K и установка результата
+            k_value = 1 / (4 * 3.14 * e)
+            result_text.set(f'K = 1 / (4 * 3.14 * {e}) = {k_value}')
+        except TypeError:
+            clear_fields()
 
 
 # Функция для очистки полей ввода
@@ -52,7 +59,7 @@ def clear_fields():
 root = tk.Tk()  # Создание основного окна Tkinter
 root.title("Калькулятор закона кулона")  # Установка заголовка окна (названия окна)
 
-k_label = tk.Label(root, text='Введите k:')  # Создание метки для поля ввода k
+k_label = tk.Label(root, text='Введите K:')  # Создание метки для поля ввода k
 k_label.pack()  # Размещение метки в окне
 
 k_var = tk.StringVar()  # Создание переменной типа StringVar для хранения значения k
